@@ -1,3 +1,5 @@
+require 'modules.rb'
+
 class Person
   attr_accessor :name, :caffeine_level
   def initialize(name)
@@ -19,19 +21,13 @@ class Person
 end
 
 class PowerRanger < Person
+
+  include Fight
+
   def initialize(name, strength, color)
     super(name)
     @strength = strength
     @color = color
-  end
-
-  def punch(target)
-    puts target.scream("ow")
-    puts target.run
-    puts target.scream("ow") if @strength > 5
-    puts target.run if @strength > 5
-    target.caffeine_level -= 1
-    @caffeine_level -= 1
   end
 
   def rest
@@ -48,19 +44,13 @@ class PowerRanger < Person
 end
 
 class EvilNinja < Person
+
+  include Fight
+
   def initialize(name, strength, evilness)
     super(name)
     @strength = strength
     @evilness = evilness
-  end
-
-  def punch(target)
-    puts target.scream("ow")
-    puts target.run
-    puts target.scream("ow") if @strength > 5
-    puts target.run if @strength > 5
-    target.caffeine_level -= 1
-    @caffeine_level -= 1
   end
 
   def cause_mayhem(target)
@@ -92,4 +82,4 @@ green = PowerRanger.new("Sean", 4, "green")
 ninja1 = EvilNinja.new("Evil Ninja 1", 10, 10)
 ninja2 = EvilNinja.new("Evil Ninja 1", 15, 30)
 
-# fight_scene(bob, phil, red, green, ninja1, ninja2)
+fight_scene(bob, phil, red, green, ninja1, ninja2)
